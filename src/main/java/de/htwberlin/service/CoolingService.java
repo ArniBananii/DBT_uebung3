@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import de.htwberlin.exceptions.CoolingSystemException;
 import org.slf4j.Logger;
@@ -40,6 +43,7 @@ public class CoolingService implements ICoolingService {
 
     // Checks if there is a tablet with the given diameter
     checkTabletsWithDiameter(diameterInCM);
+
 
 
     try {
@@ -87,6 +91,31 @@ public class CoolingService implements ICoolingService {
     } catch (SQLException e) {
       L.info("Excpetion in der Verbindung zur Datenbank: " + e.getMessage());
     }
+  }
+
+  private Map<Integer, List<Integer>> getTrays() {
+
+    Map<Integer, List<Integer>> trays = new HashMap<>();
+
+    String sql = String.join(" ",
+            "SELECT * ",
+            "FROM TRAY"
+    );
+
+    try (PreparedStatement stmt = useConnection().prepareStatement(sql)) {
+      try (ResultSet rs = stmt.executeQuery()) {
+        while(rs.next()) {
+          int trayId = rs.getInt("TRAYID");
+          int capacity = rs.getInt("CAPACITY");
+          int diameterInCM = rs.getInt("DIAMETERINCM");
+          int expirationDate = rs.getInt("EXPIRATIONDATE");
+          trays.put(trayId, List.of(diameterInCM, capacity, expirationDate));
+        }
+      }
+    } catch (SQLException e) {
+      L.info("Excpetion in der Verbindung zur Datenbank: " + e.getMessage());
+    }
+    return trays;
   }
 
 }
