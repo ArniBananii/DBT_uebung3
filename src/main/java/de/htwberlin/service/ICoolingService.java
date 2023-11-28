@@ -43,3 +43,11 @@ public interface ICoolingService {
    */
   void transferSample(Integer sampleId, Integer diameterInCM);
 }
+
+
+/*
+ 1. search for Tray conditions: diameter must fit, expiration date > than sample expiration date
+ 2. search for Place conditions: place must be free = Tray.capacity >= and wants to be smallest placeNo from Place
+ 3.if no Tray found, search for Tray where no PlaceId and set expiration date to sample expiration date + 30 days
+ 4. if no Tray found, throw CoolingSystemException!
+ */
