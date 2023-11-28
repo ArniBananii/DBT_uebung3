@@ -12,6 +12,9 @@ import org.slf4j.LoggerFactory;
 import de.htwberlin.exceptions.DataException;
 
 public class CoolingService implements ICoolingService {
+
+  // Test commit
+
   private static final Logger L = LoggerFactory.getLogger(CoolingService.class);
   private Connection connection;
 
