@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import de.htwberlin.entities.Sample;
+import de.htwberlin.entities.SampleGateway;
 import de.htwberlin.exceptions.CoolingSystemException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +17,8 @@ import org.slf4j.LoggerFactory;
 import de.htwberlin.exceptions.DataException;
 
 public class CoolingService implements ICoolingService {
-
+private SampleGateway sampleGateway;
+private Sample sample;
   // Test commit
 
   private static final Logger L = LoggerFactory.getLogger(CoolingService.class);
@@ -38,8 +41,17 @@ public class CoolingService implements ICoolingService {
   public void transferSample(Integer sampleId, Integer diameterInCM) {
     L.info("transferSample: sampleId: " + sampleId + ", diameterInCM: " + diameterInCM);
 
+
+    //my check for now
+    sampleGateway = new SampleGateway();
+    sampleGateway.setConnection(this.connection);
+    sample = sampleGateway.findBy(sampleId);
+    if(sample == null){
+      throw new CoolingSystemException("Sample with id " + sampleId + " does not exist");
+    }
+
     // Checks if Sample exists
-    checkSample(sampleId);
+//    checkSample(sampleId);
 
     // Checks if there is a tablet with the given diameter
     checkTabletsWithDiameter(diameterInCM);

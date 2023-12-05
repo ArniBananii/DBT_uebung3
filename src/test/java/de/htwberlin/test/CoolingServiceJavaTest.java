@@ -80,7 +80,7 @@ public class CoolingServiceJavaTest {
   }
 
   /**
-   * Ablaufdatum Probe zu gross. Kein freies Tablett richtiger Größe vorhanden.
+   * Ablaufdatum Sample zu gross. Kein freies Tablett richtiger Größe vorhanden.
    */
   @org.junit.Test(expected = CoolingSystemException.class)
   public void testCoolingService03() {

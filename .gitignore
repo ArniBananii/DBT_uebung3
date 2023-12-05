@@ -1,6 +1,6 @@
 # Default ignored files
 /shelf/
-/.idea/workspace.xml
+.idea
 # Editor-based HTTP Client requests
 /httpRequests/
 # Datasource local storage ignored files
@@ -8,5 +8,5 @@
 /dataSources.local.xml
 /bin
 */src/main/java/de/htwberlin/utils/DBCred.java
-.idea
+/out
 

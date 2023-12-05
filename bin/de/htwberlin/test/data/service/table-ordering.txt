@@ -1,4 +1,0 @@
-samplekind
-tray
-sample
-place
