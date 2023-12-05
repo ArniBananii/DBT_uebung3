@@ -6,4 +6,5 @@ public interface DbCred {
   final String user = "u587883";
   final String password = "p587883";
   final String schema = "u587883";
+  //test
 }
