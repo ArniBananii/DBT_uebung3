@@ -1,7 +1,6 @@
-package de.htwberlin.entities;
+package de.htwberlin.dao;
 
 import java.sql.Date;
-import java.time.format.DateTimeFormatter;
 
 public class Tray {
     private Integer trayID;

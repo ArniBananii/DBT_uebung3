@@ -1,6 +1,5 @@
-package de.htwberlin.entities;
+package de.htwberlin.dao;
 
-import java.time.format.DateTimeFormatter;
 import java.sql.Date;
 
 public class Sample {

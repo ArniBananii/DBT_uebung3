@@ -1,4 +1,4 @@
-package de.htwberlin.entities;
+package de.htwberlin.dao;
 
 import de.htwberlin.exceptions.CoolingSystemException;
 import de.htwberlin.service.CoolingService;
@@ -10,7 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class SampleGateway implements IDao<Sample, Integer> {
+public class SampleDao implements IDao<Sample, Integer> {
 
     private static final Logger L = LoggerFactory.getLogger(CoolingService.class);
     Connection connection = null;
@@ -33,14 +33,13 @@ public class SampleGateway implements IDao<Sample, Integer> {
         try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM SAMPLE LEFT JOIN SAMPLEKIND ON SAMPLE.SAMPLEKINDID = SAMPLEKIND.SAMPLEKINDID WHERE SAMPLEID = ?")) {
             preparedStatement.setInt(1, id);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                if (resultSet.next()) {
+                if (!resultSet.next()) {
+                    throw new CoolingSystemException("Sample with ID:"+ id + "does not exist!");
+                }else{
                     sample.setSampleID(resultSet.getInt("SAMPLEID"));
                     sample.setExpirationDate(resultSet.getDate("EXPIRATIONDATE"));
                     sample.setSampleName(resultSet.getString("TEXT"));
                     sample.setValidNumberOfDays(resultSet.getInt("VALIDNOOFDAYS"));
-                }else{
-                    throw new CoolingSystemException("Sample with ID:"+ id + "does not exist!");
-
                 }
             }
         } catch (Exception e) {

@@ -30,7 +30,7 @@ public interface ICoolingService {
    * <li>Gibt es kein leeres Tablett mit passendem Durchmesser mehr, so wird
    * eine Ausnahme ausgeloest.</li>
    * </ul>
-   * 
+   *
    * @param sampleId
    *          Primaerschluessel der Probe.
    * @param diameterInCM
