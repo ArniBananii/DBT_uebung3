@@ -1,16 +1,16 @@
 package de.htwberlin.dao;
 
 public class Place {
-    private Integer placeID;
+    private Integer sampleID;
     private Integer trayID;
     private Integer planceNo;
 
     public Integer getPlaceID() {
-        return placeID;
+        return sampleID;
     }
 
-    public void setPlaceID(Integer placeID) {
-        this.placeID = placeID;
+    public void setSampleID(Integer placeID) {
+        this.sampleID = placeID;
     }
 
     public Integer getTrayID() {
