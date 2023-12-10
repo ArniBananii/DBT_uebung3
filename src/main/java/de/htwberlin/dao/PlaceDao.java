@@ -24,11 +24,12 @@ public class PlaceDao {
         return connection;
     }
 
-    public void createPlace(Tray tray,Integer placeNo, Sample sample) {
+    public void createPlace(Integer trayID,Integer placeNo, Integer sampleID) {
+        L.info("Place wird hinzugefügt für die TrayID: " + trayID + " und die PlaceNo: " + placeNo + " und die SampleID: " + sampleID);
         try (PreparedStatement prepStateForPlaceInsert = useConnection().prepareStatement("INSERT INTO PLACE VALUES (?,?,?)")) {
-            prepStateForPlaceInsert.setInt(1, tray.getTrayID());
+            prepStateForPlaceInsert.setInt(1, trayID);
             prepStateForPlaceInsert.setInt(2, placeNo);
-            prepStateForPlaceInsert.setInt(3, sample.getSampleID());
+            prepStateForPlaceInsert.setInt(3, sampleID);
             prepStateForPlaceInsert.executeUpdate();
         } catch (SQLException e) {
             L.error("Excpetion in der Datenbank query: " + e.getMessage());
