@@ -5,7 +5,7 @@ public class Place {
     private Integer trayID;
     private Integer planceNo;
 
-    public Integer getPlaceID() {
+    public Integer getSampleID() {
         return sampleID;
     }
 
