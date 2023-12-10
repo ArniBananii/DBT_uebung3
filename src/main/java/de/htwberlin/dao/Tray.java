@@ -1,6 +1,5 @@
 package de.htwberlin.dao;
 
-
 import java.sql.Date;
 
 public class Tray {
@@ -8,6 +7,7 @@ public class Tray {
     private Integer diameterInCm;
     private Integer capacity;
     private Date expirationDate;
+    private Boolean setExpirationDateManually = false;
 
     public Integer getTrayID() {
         return trayID;
@@ -20,6 +20,7 @@ public class Tray {
     public Integer getDiameterInCm() {
         return diameterInCm;
     }
+    public Boolean getSetExpirationDateManually() { return setExpirationDateManually; }
 
     public void setDiameterInCm(Integer diameterInCm) {
         this.diameterInCm = diameterInCm;
@@ -40,4 +41,5 @@ public class Tray {
     public void setExpirationDate(Date expirationDate) {
         this.expirationDate = expirationDate;
     }
+    public void setSetExpirationDateManually(Boolean setExpirationDateManually) { this.setExpirationDateManually = setExpirationDateManually; }
 }
