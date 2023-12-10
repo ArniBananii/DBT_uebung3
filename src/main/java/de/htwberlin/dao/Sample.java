@@ -40,3 +40,4 @@ public class Sample {
         this.sampleName = sampleName;
     }
 }
+
